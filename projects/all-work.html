@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>All work — Saraphtha</title>
+  <meta name="description" content="All of Saraphtha's projects: design, development and case studies.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap">
+
+  <!-- This page sits next to index.html, so no "../" needed -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="project-page">
+
+  <!-- The same sunset strip as the project pages -->
+  <header class="project-sky">
+    <a class="project-sky__back" href="index.html#work">← Back to the hill</a>
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#3B2340" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <circle cx="1180" cy="190" r="60" fill="#FFE9AE"/>
+        <path d="M0 200 C 240 160 480 180 720 200 C 960 220 1200 170 1440 180 L1440 260 L0 260 Z" fill="#C893A8"/>
+        <path d="M0 228 C 300 210 700 236 1000 224 C 1200 216 1340 226 1440 222 L1440 260 L0 260 Z" fill="#98AE74"/>
+        <path d="M200 226 Q 620 200 863 158" fill="none" stroke="#FFFBF4" stroke-width="1.6"/>
+        <g transform="translate(-20 -130) rotate(12 900 210)">
+          <polygon points="900,150 940,210 900,210" fill="#E8604F"/>
+          <polygon points="900,150 860,210 900,210" fill="#F6C453"/>
+          <polygon points="860,210 900,290 900,210" fill="#E8604F"/>
+          <polygon points="940,210 900,290 900,210" fill="#F6C453"/>
+          <polygon points="900,150 940,210 900,290 860,210" fill="none"/>
+        </g>
+      </g>
+    </svg>
+  </header>
+
+  <main class="project">
+    <p class="eyebrow">the whole collection</p>
+    <h1>All work</h1>
+    <p class="project__intro">[A sentence introducing your work — what kinds of projects are here.]</p>
+
+    <!-- One <li> per project. Copy a block to add another one. -->
+    <ul class="all-work">
+
+      <li>
+        <a class="all-work__card" href="projects/project-one.html">
+          <img class="all-work__image" src="images/earth-archive-home.png" alt="The Earth Archive travel blog homepage">
+          <span class="all-work__body">
+            <span class="all-work__type">Web design · Development</span>
+            <span class="all-work__title">The Earth Archive</span>
+            <span class="all-work__desc">A travel blog I designed and built with Astro, styled like a travel journal.</span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="all-work__card" href="projects/project-two.html">
+          <!-- Swap the coloured box for: <img class="all-work__image" src="images/your-image.png" alt="[describe the image]"> -->
+          <span class="all-work__image" style="background: #C9C2E8;"></span>
+          <span class="all-work__body">
+            <span class="all-work__type">[Type, e.g. UX design]</span>
+            <span class="all-work__title">[Project two]</span>
+            <span class="all-work__desc">[One sentence about this project.]</span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="all-work__card" href="projects/project-three.html">
+          <span class="all-work__image" style="background: #BFE0C8;"></span>
+          <span class="all-work__body">
+            <span class="all-work__type">[Type]</span>
+            <span class="all-work__title">[Project three]</span>
+            <span class="all-work__desc">[One sentence about this project.]</span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="all-work__card" href="projects/project-four.html">
+          <span class="all-work__image" style="background: #F3C9B8;"></span>
+          <span class="all-work__body">
+            <span class="all-work__type">[Type]</span>
+            <span class="all-work__title">[Project four]</span>
+            <span class="all-work__desc">[One sentence about this project.]</span>
+          </span>
+        </a>
+      </li>
+
+    </ul>
+
+    <nav class="project__next" aria-label="Back">
+      <a class="btn" href="index.html#work">← Back to the hill</a>
+    </nav>
+  </main>
+</body>
+</html>

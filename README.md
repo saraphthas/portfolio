@@ -1,5 +1,18 @@
 # Saraphtha — Portfolio
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 A one-page portfolio where the sky turns from sunset to outer space as you scroll, and the kite follows you all the way up.
 
 ## What's in the folder

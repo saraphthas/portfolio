@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Earth Archive — Saraphtha</title>
+  <meta name="description" content="The Earth Archive: a travel blog Saraphtha designed and built with Astro, with journal-style photo layouts and stories from seven trips.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap">
+
+  <!-- "../" means "go up one folder" — style.css lives next to index.html -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="project-page">
+
+  <!-- A little strip of the same sunset sky, with the kite as a way home -->
+  <header class="project-sky">
+    <a class="project-sky__back" href="../index.html#work">← Back to the hill</a>
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#3B2340" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <circle cx="1180" cy="190" r="60" fill="#FFE9AE"/>
+        <path d="M0 200 C 240 160 480 180 720 200 C 960 220 1200 170 1440 180 L1440 260 L0 260 Z" fill="#C893A8"/>
+        <path d="M0 228 C 300 210 700 236 1000 224 C 1200 216 1340 226 1440 222 L1440 260 L0 260 Z" fill="#98AE74"/>
+        <path d="M200 226 Q 620 200 863 158" fill="none" stroke="#FFFBF4" stroke-width="1.6"/>
+        <g transform="translate(-20 -130) rotate(12 900 210)">
+          <polygon points="900,150 940,210 900,210" fill="#E8604F"/>
+          <polygon points="900,150 860,210 900,210" fill="#F6C453"/>
+          <polygon points="860,210 900,290 900,210" fill="#E8604F"/>
+          <polygon points="940,210 900,290 900,210" fill="#F6C453"/>
+          <polygon points="900,150 940,210 900,290 860,210" fill="none"/>
+        </g>
+      </g>
+    </svg>
+  </header>
+
+  <main class="project">
+    <p class="eyebrow">case study · 2026</p>
+    <h1>The Earth Archive</h1>
+    <p class="project__intro">A travel blog I designed and built from scratch to collect stories from my trips, from my first solo week in Barcelona to puffins in Newfoundland. I wanted it to feel less like a website and more like flipping through a travel journal.</p>
+
+    <p><a class="btn" href="https://my-travel-blog-lac.vercel.app/" target="_blank" rel="noopener">Visit the live site ↗</a></p>
+
+    <!-- Quick facts -->
+    <dl class="project__facts">
+      <div>
+        <dt>My role</dt>
+        <dd>Designer &amp; developer</dd>
+      </div>
+      <div>
+        <dt>Tools</dt>
+        <dd>Astro, HTML, CSS, JavaScript, Vercel</dd>
+      </div>
+      <div>
+        <dt>Timeline</dt>
+        <dd>2 weeks</dd>
+      </div>
+    </dl>
+
+    <img class="project__image" src="../images/earth-archive-home.png" alt="The Earth Archive homepage, with the hero heading and the Latest Adventures list">
+
+    <h2>The goal</h2>
+    <p>I'd been on trips to Spain, Sri Lanka, Guatemala, Portugal, Morocco and around Canada, and the stories were scattered across my camera roll. I wanted one home for them: a place that was easy to read, simple to add new trips to, and that felt personal rather than like a template.</p>
+
+    <h2>Designing the feel</h2>
+    <p>I chose a calm forest, sage and cream palette to match the outdoorsy, reflective tone of the writing, with Playfair Display for headings and DM Sans for easy reading. I designed a custom homepage with a "Latest Adventures" list of trips, and a dropdown menu that groups stories by region: Europe, Asia, the Americas and Africa.</p>
+    <p>For the post pages, I wanted photos to feel like they'd been taped into a journal. Photos sit tilted and at different sizes beside and behind the text, fading as you scroll, with a full gallery at the end of each story.</p>
+    <img class="project__image" src="../images/earth-archive-barcelona.png" alt="The Barcelona post, with tilted, taped-in photos beside the story text">
+
+    <h2>Building it</h2>
+    <p>I built the site with Astro, which let me write each trip as its own post while reusing one homepage and one blog post layout across all of them. Adding a new trip is as simple as writing a new post and dropping its photos into a folder. The site is hosted on Vercel and updates automatically whenever I push changes.</p>
+    <img class="project__image" src="../images/earth-archive-gallery.png" alt="The photo gallery at the bottom of a blog post">
+
+    <h2>The result</h2>
+    <p>The Earth Archive is live with seven stories so far, from Halifax and Newfoundland to Asturias, Lisbon, Madeira and Morocco, Guatemala, Sri Lanka and Barcelona. [Add a line about what you learned, or what you'd add next.]</p>
+
+    <nav class="project__next" aria-label="More projects">
+      <a class="btn" href="../index.html#work">← All work</a>
+      <a class="btn" href="project-two.html">Next project →</a>
+    </nav>
+  </main>
+</body>
+</html>

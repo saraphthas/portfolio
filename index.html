@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- What shows up in Google results and browser tabs. Edit the description! -->
+  <title>Saraphtha — Designer &amp; Illustrator</title>
+  <meta name="description" content="[One sentence about your work — this appears under your name in Google.]">
+
+  <!-- Fonts: Caveat Brush (headings) + Patrick Hand (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- "defer" means the script runs after the page is built -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Lets keyboard users jump past the menu -->
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <!-- ============================================================
+       THE SCENE — fixed behind everything. script.js changes it
+       as you scroll. aria-hidden = screen readers skip the drawings.
+       ============================================================ -->
+  <div class="scene" id="scene" aria-hidden="true">
+
+    <!-- Stars: script.js draws dots into these two layers -->
+    <div class="stars" id="stars"></div>
+    <div class="stars stars--twinkle" id="stars-twinkle"></div>
+
+    <!-- Shooting stars (only visible at night) -->
+    <div class="shooting-stars" id="shooting-stars">
+      <span class="shooting-star shooting-star--1"></span>
+      <span class="shooting-star shooting-star--2"></span>
+    </div>
+
+    <svg id="scene-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <!-- Soft glow for the galaxy -->
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="16"/>
+        </filter>
+        <!-- The gentle hand-drawn wobble on every outline -->
+        <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" seed="4" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <!-- A grass tuft, reused a few times -->
+        <path id="tuft" d="M0 0 l3 -9 M5 0 l0 -11 M10 0 l-3 -9"/>
+      </defs>
+
+      <!-- SPACE: galaxy + planets (fade in near the bottom of the page) -->
+      <g id="space" opacity="0">
+        <g transform="translate(1040 300)">
+          <g class="galaxy-spin">
+            <g filter="url(#glow)">
+              <ellipse rx="280" ry="86" fill="#5B3FB3" opacity="0.55" transform="rotate(-18)"/>
+              <ellipse rx="190" ry="56" fill="#D96BB0" opacity="0.5" transform="rotate(-18)"/>
+              <ellipse rx="90" ry="30" fill="#FFD9F2" opacity="0.85" transform="rotate(-18)"/>
+            </g>
+            <path d="M0 0 C 60 -40 160 -30 230 10 M0 0 C -60 40 -160 30 -230 -10" stroke="#C9B6FF" stroke-width="10" fill="none" opacity="0.45" filter="url(#glow)"/>
+            <circle r="20" fill="#FFF6E0"/>
+          </g>
+        </g>
+        <g class="ink" filter="url(#wobble)">
+          <!-- Ringed planet -->
+          <circle cx="250" cy="660" r="72" fill="#F2B26B"/>
+          <path d="M186 630 C 220 640 280 620 316 632 M180 680 C 220 690 290 672 322 684" fill="none" stroke="#C9803F" stroke-width="5"/>
+          <ellipse cx="250" cy="664" rx="130" ry="26" fill="none" stroke="#F6D9A8" stroke-width="7" transform="rotate(-14 250 664)"/>
+          <!-- Little teal planet -->
+          <circle cx="170" cy="200" r="28" fill="#7FC8C2"/>
+          <path d="M156 192 c 6 -4 12 -4 18 0" fill="none" stroke-width="1.8"/>
+        </g>
+      </g>
+
+      <!-- MOON (night) -->
+      <g id="moon" class="ink" opacity="0" filter="url(#wobble)">
+        <circle cx="1200" cy="190" r="62" fill="#F4EEDC"/>
+        <circle cx="1180" cy="172" r="10" fill="#E2D9BF"/>
+        <circle cx="1222" cy="205" r="14" fill="#E2D9BF"/>
+        <circle cx="1188" cy="222" r="7" fill="#E2D9BF"/>
+      </g>
+
+      <!-- SUN (sets as you scroll) -->
+      <g id="sun" filter="url(#wobble)">
+        <g stroke="#E9A23B" stroke-width="3" stroke-linecap="round">
+          <line x1="1342" y1="432" x2="1358" y2="425"/>
+          <line x1="1288" y1="378" x2="1295" y2="362"/>
+          <line x1="1212" y1="378" x2="1205" y2="362"/>
+          <line x1="1158" y1="432" x2="1142" y2="425"/>
+          <line x1="1250" y1="370" x2="1250" y2="354"/>
+        </g>
+        <circle cx="1250" cy="470" r="82" fill="#FFE9AE" stroke="#3B2340" stroke-width="2.2"/>
+      </g>
+
+      <!-- BIRDS (fly past at sunset) -->
+      <g id="birds">
+        <g class="flock" fill="none" stroke="#3B2340" stroke-width="2" stroke-linecap="round">
+          <path class="flap" d="M0 300 q 8 -8 16 0 q 8 -8 16 0"/>
+          <path class="flap" d="M40 280 q 6 -6 12 0 q 6 -6 12 0"/>
+          <path class="flap" d="M70 310 q 7 -7 14 0 q 7 -7 14 0"/>
+        </g>
+      </g>
+
+      <!-- HILLS, HOUSE and GIRL (all move down together as you scroll) -->
+      <g id="hills" class="ink" filter="url(#wobble)">
+        <path d="M0 560 C 200 500 380 520 560 560 C 760 600 900 520 1100 500 C 1260 485 1360 520 1440 540 L1440 1300 L0 1300 Z" fill="#C893A8"/>
+        <path d="M0 640 C 220 600 420 640 640 650 C 820 660 940 560 1100 545 C 1250 532 1360 570 1440 590 L1440 1300 L0 1300 Z" fill="#98AE74"/>
+
+        <!-- House + tree -->
+        <circle cx="1180" cy="512" r="24" fill="#6E9A58"/>
+        <rect x="1176" y="534" width="8" height="14" fill="#7A5240"/>
+        <rect x="1118" y="470" width="12" height="24" fill="#9A5544"/>
+        <rect x="1060" y="500" width="80" height="50" fill="#F6E5C8"/>
+        <polygon points="1050,503 1100,460 1150,503" fill="#C25E52"/>
+        <rect x="1092" y="522" width="16" height="28" rx="8" fill="#9A5544"/>
+        <rect class="window" x="1068" y="512" width="16" height="14" fill="#FCE3B4"/>
+        <rect class="window" x="1116" y="512" width="16" height="14" fill="#FCE3B4"/>
+
+        <path d="M0 760 C 160 720 300 710 440 720 C 620 735 760 790 980 810 C 1180 830 1320 800 1440 790 L1440 1300 L0 1300 Z" fill="#6A9160"/>
+        <g fill="none" stroke-width="1.8">
+          <use href="#tuft" transform="translate(150 732)"/>
+          <use href="#tuft" transform="translate(600 738)"/>
+          <use href="#tuft" transform="translate(1100 818)"/>
+          <use href="#tuft" transform="translate(1340 800)"/>
+        </g>
+        <g fill="#F29BB7" stroke-width="1.6">
+          <circle cx="230" cy="732" r="5"/>
+          <circle cx="900" cy="810" r="5"/>
+          <circle cx="1260" cy="822" r="5"/>
+        </g>
+        <path d="M0 845 C 300 822 600 862 900 852 C 1150 844 1300 862 1440 852 L1440 1300 L0 1300 Z" fill="#557A4E"/>
+
+        <!-- The girl (her hand is at 446, 630 — the kite string starts there) -->
+        <path d="M414 702 L410 722 M426 702 L431 722" fill="none" stroke-width="4.5"/>
+        <path d="M398 704 L442 704 L428 652 L412 652 Z" fill="#F2C14E"/>
+        <path d="M414 660 L402 686 M426 660 L446 630" fill="none" stroke="#B07A52" stroke-width="4.5"/>
+        <circle cx="420" cy="640" r="11" fill="#B07A52"/>
+        <path d="M409 638 C409 624 431 624 431 638 C428 632 412 632 409 638 Z" fill="#1C1A1D"/>
+        <path d="M430 634 C442 630 450 636 456 644 C446 642 438 642 430 640 Z" fill="#1C1A1D"/>
+      </g>
+
+      <!-- KITE STRING — script.js redraws this every scroll -->
+      <path id="kite-string" d="M446 630 Q 720 520 883 288" fill="none" stroke="#FFFBF4" stroke-width="1.6"/>
+
+      <!-- KITE — script.js moves this group; the inner group bobs on its own -->
+      <g id="kite">
+        <g transform="rotate(12 900 210)">
+          <g class="kite-bob ink" filter="url(#wobble)">
+            <polygon points="900,150 940,210 900,210" fill="#E8604F"/>
+            <polygon points="900,150 860,210 900,210" fill="#F6C453"/>
+            <polygon points="860,210 900,290 900,210" fill="#E8604F"/>
+            <polygon points="940,210 900,290 900,210" fill="#F6C453"/>
+            <polygon points="900,150 940,210 900,290 860,210" fill="none"/>
+            <path d="M900 290 C880 320 920 340 900 370 C880 400 915 420 905 450" fill="none" stroke="#FFFBF4" stroke-width="1.8"/>
+            <path d="M890 324 L900 330 L890 336 Z M910 324 L900 330 L910 336 Z M890 394 L900 400 L890 406 Z M910 394 L900 400 L910 406 Z" fill="#7FB3D5" stroke-width="1.4"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ============================================================
+       CLOUDS — real buttons so they can be clicked (they puff away)
+       ============================================================ -->
+  <div class="clouds" id="clouds">
+    <button class="cloud" type="button" style="left: 52%; top: 19%;" aria-label="Puff away this cloud">
+      <svg viewBox="-100 -50 200 80" aria-hidden="true"><use href="#cloud-shape"/></svg>
+    </button>
+    <button class="cloud" type="button" style="left: 75%; top: 21%;" aria-label="Puff away this cloud">
+      <svg viewBox="-100 -50 200 80" aria-hidden="true"><use href="#cloud-shape"/></svg>
+    </button>
+    <button class="cloud" type="button" style="left: 46%; top: 38%;" aria-label="Puff away this cloud">
+      <svg viewBox="-100 -50 200 80" aria-hidden="true"><use href="#cloud-shape"/></svg>
+    </button>
+    <!-- The cloud drawing all three buttons share -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <path id="cloud-shape" d="M-70 20 C -95 20 -98 -6 -72 -8 C -70 -34 -36 -40 -22 -20 C -10 -46 38 -44 44 -16 C 70 -22 90 0 76 20 Z" fill="#FFFFFF" fill-opacity="0.9" stroke="#3B2340" stroke-width="2.2" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- ============================================================
+       MENU — stays at the top the whole time
+       ============================================================ -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="nav__logo" href="#home">Saraphtha</a>
+      <ul class="nav__links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       CONTENT — five sections, each one screen tall
+       ============================================================ -->
+  <main>
+
+    <!-- 1. HOME — sunset -->
+    <section id="home" class="section section--hero">
+      <div class="hero">
+        <p class="eyebrow"> </p>
+        <h1 class="hero__title">Hi, I'm Saraphtha.</h1>
+        <svg class="squiggle" width="300" height="16" viewBox="0 0 300 16" aria-hidden="true">
+          <path d="M4 10 C 80 4 180 12 296 6" stroke="#E8604F" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <p class="hero__intro"> I speak fluent Human, Business and Computer.</p>
+        <a class="btn" href="#work">See my work</a>                          <!-- CHANGED: button text -->
+        <p class="hero__hint">psst — try clicking the clouds</p>
+        </div>
+
+        <!-- CHANGED: moved OUTSIDE the hero box so it can sit at the bottom centre of the screen.
+            It's now a link (jumps to Work) with A2's loopy arrow. -->
+        <a class="hero__scroll" href="#work">
+        scroll to follow the kite up
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4 C 22 4 22 14 14 14 C 8 14 10 22 15 26 M10 22 L15 26 L19 20"/></svg>
+        </a>
+    </section>
+
+    <!-- 2. WORK — dusk -->
+    <section id="work" class="section">
+      <div class="card card--wide">
+        <p class="eyebrow">dusk · chapter one</p>
+        <h2>Selected work</h2>
+        <ul class="work-grid">
+          <!-- Each project links to its own page in the projects folder.
+               Copy projects/project-one.html for each new project. -->
+          <li>
+            <a class="work-card" href="projects/project-one.html">
+              <!-- Swap the placeholder span for: <img src="images/project-one.jpg" alt="[describe the image]"> -->
+              <img src="images/travelblog.jpg" alt="A travel blog I designed and built from scratch."> 
+              <span class="work-card__title"> The Earth Archive</span>
+            </a>
+          </li>
+          <li>
+            <a class="work-card" href="projects/project-one.html">
+              <span class="work-card__image" style="background: #C9C2E8;"></span>
+              <span class="work-card__title">[Project two]</span>
+            </a>
+          </li>
+          <li>
+            <a class="work-card" href="projects/project-one.html">
+              <span class="work-card__image" style="background: #BFE0C8;"></span>
+              <span class="work-card__title">[Project three]</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="work-card" href="projects/project-one.html">
+              <span class="work-card__image" style="background: #BFE0C8;"></span>
+              <span class="work-card__title">[Project four]</span>
+            </a>
+          </li>
+        </ul>
+        <p class="work-more"><a class="btn" href="work.html">See all work →</a></p>   <!-- NEW -->
+      </div>
+    </section>
+
+    <!-- 3. ABOUT — night falls -->
+    <section id="about" class="section section--right">
+      <div class="card card--about">
+        <!-- Swap for: <img class="about__photo" src="images/me.jpg" alt="Photo of Saraphtha"> -->
+        <div class="about__photo about__photo--placeholder">[photo]</div>
+        <div>
+          <p class="eyebrow">night falls · chapter two</p>
+          <h2>About me</h2>
+          <p>[A few sentences about who you are, what you love making, and what you're curious about.]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PROCESS — among the stars -->
+    <section id="process" class="section">
+      <div class="card card--wide">
+        <p class="eyebrow">among the stars · chapter three</p>
+        <h2>How I work</h2>
+        <ol class="steps">
+          <li><span class="steps__num">1</span>[Step one]</li>
+          <li><span class="steps__num">2</span>[Step two]</li>
+          <li><span class="steps__num">3</span>[Step three]</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT — outer space -->
+    <section id="contact" class="section section--center">
+      <div class="card card--contact">
+        <p class="eyebrow">outer space · the end</p>
+        <h2>Send a message into space</h2>
+        <p>[A friendly line inviting people to get in touch.]</p>
+        <a class="btn" href="mailto:[your@email.com]">[your@email.com]</a>
+        <p class="links">
+          <a href="[your LinkedIn URL]">LinkedIn</a> ·
+          <a href="[your Instagram URL]">Instagram</a> ·
+          <a href="#home">Back down to the hill</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

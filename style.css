@@ -1,0 +1,629 @@
+/* ==============================================================
+   SARAPHTHA — PORTFOLIO STYLES
+   Change colours here once and they update everywhere.
+   ============================================================== */
+:root {
+  --ink: #3B2340;        /* outlines + borders */
+  --text: #2E1A36;       /* main text */
+  --cream: #FFFBF4;      /* cards + menu */
+  --coral: #E8604F;      /* accents, active menu item */
+  --sunny: #F6C453;      /* highlights */
+
+  --font-heading: 'Caveat Brush', cursive;
+  --font-body: 'Patrick Hand', 'Comic Sans MS', sans-serif;
+
+  /* Slightly uneven corners = the hand-drawn feel */
+  --wobbly-big: 34px 28px 32px 26px / 26px 32px 28px 34px;
+  --wobbly-small: 30px 26px 28px 24px / 24px 28px 26px 30px;
+}
+
+/* ---------- Basics ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.45;
+  color: var(--text);
+  background: #8E7DBA; /* shows for a split second before the script runs */
+}
+
+a { color: var(--text); }
+a:hover { color: #7A3B2E; }
+
+:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+
+h1, h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(42px, 5vw, 56px);
+  margin-bottom: 14px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 18px;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+}
+.skip-link:focus { top: 16px; }
+
+/* ==============================================================
+   THE SCENE (fixed behind the page)
+   ============================================================== */
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  /* script.js replaces this background as you scroll */
+  background: linear-gradient(180deg, #8E7DBA 0%, #FCE3B4 100%);
+}
+
+.scene svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Shared outline style for drawn shapes */
+.ink {
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Stars — script.js fills these with dots */
+.stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.stars--twinkle { animation: twinkle 3.2s ease-in-out infinite; }
+
+/* Shooting stars */
+.shooting-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.shooting-star {
+  position: absolute;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+.shooting-star--1 { top: 12%; left: 82%; width: 130px; animation: shoot 7s ease-out infinite; }
+.shooting-star--2 { top: 24%; left: 58%; width: 100px; animation: shoot 9s ease-out 3.5s infinite; }
+
+/* Kite bob, birds, galaxy */
+.kite-bob {
+  animation: bob 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.flock { animation: fly 16s linear infinite; }
+.flap {
+  animation: flap 0.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.galaxy-spin {
+  animation: spin 160s linear infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+/* ---------- Clouds (clickable) ---------- */
+.clouds {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;        /* only the clouds themselves are clickable */
+  --cloud-opacity: 1;          /* script.js changes these two */
+  --cloud-drift: 0px;
+}
+.clouds.is-hidden .cloud { pointer-events: none; }
+
+.cloud {
+  position: absolute;
+  width: clamp(110px, 13vw, 190px);
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: var(--cloud-opacity);
+  transform: translate(-50%, calc(-50% + var(--cloud-drift))) scale(1);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.cloud svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.cloud.is-puffed {
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + var(--cloud-drift))) scale(1.5);
+  pointer-events: none;
+}
+
+/* ==============================================================
+   MENU
+   ============================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 20px 16px 0;
+  pointer-events: none;
+}
+
+.nav {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 28px;
+  padding: 8px 12px 8px 26px;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 40px 34px 38px 32px / 32px 38px 34px 40px;
+}
+
+.nav__logo {
+  font-family: var(--font-heading);
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__links a {
+  display: inline-block;
+  padding: 10px 0;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+
+/* script.js adds aria-current to the section you're looking at */
+.nav__links a[aria-current="true"] { border-bottom-color: var(--coral); }
+
+/* ==============================================================
+   SECTIONS + CARDS
+   ============================================================== */
+main {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;   /* lets clicks reach the clouds behind... */
+}
+main .hero,
+main .card { pointer-events: auto; }  /* ...but content stays clickable */
+.project-page main { pointer-events: auto; }  /* NEW: project pages have no clouds, so keep everything clickable */
+
+.section {
+  min-height: 100vh;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 120px 24px;
+  display: flex;
+  align-items: center;
+  scroll-margin-top: 0;
+}
+.section--right { justify-content: flex-end; }
+.section--center { justify-content: center; }
+.section--hero { align-items: flex-start; padding-top: 150px; }
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 19px;
+}
+
+/* Hero */
+.hero { max-width: 600px; }
+.hero .eyebrow { font-size: 22px; }
+.hero__title { font-size: clamp(60px, 8vw, 92px); }
+.squiggle { display: block; max-width: 100%; margin: 4px 0 0 6px; }
+.hero__intro { margin: 18px 0 30px; font-size: 25px; line-height: 1.4; max-width: 470px; }
+/* CHANGED: scroll message sits at the bottom centre of the screen, like A2 */
+.section--hero { position: relative; }   /* NEW: lets the message position itself inside the hero */
+
+.hero__scroll {
+  position: absolute;                     /* NEW: placed independently of the text box */
+  left: 50%;                              /* NEW: horizontally centred... */
+  bottom: 14px;                           /* NEW: ...14px from the bottom of the screen */
+  transform: translateX(-50%);            /* NEW: true centring */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  color: var(--cream);                    /* CHANGED: cream, so it shows on the dark green hill */
+  font-size: 21px;
+  text-decoration: none;
+  white-space: nowrap;                    /* NEW: keeps it on one line */
+  pointer-events: auto;                   /* NEW: makes it clickable */
+}
+.hero__scroll:hover { color: var(--sunny); }   /* NEW: turns yellow on hover */
+.hero__scroll svg { animation: nudge 1.6s ease-in-out infinite; }
+
+/* CHANGED: back to its original spacing under the button */
+.hero__hint { margin: 22px 0 0; font-size: 19px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: var(--text);
+  color: var(--cream);
+  border-radius: var(--wobbly-small);
+  font-size: 23px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.btn:hover { color: var(--cream); transform: translateY(-2px) rotate(-1deg); }
+
+/* Cards */
+.card {
+  width: 100%;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-big);
+  padding: 32px 36px;
+}
+.card p { margin: 0 0 12px; }
+.card--wide { max-width: 640px; }
+.card--about {
+  max-width: 560px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+.card--about > div:not(.about__photo) { flex: 1 1 260px; min-width: 0; }
+.card--contact { max-width: 560px; text-align: center; }
+.card--contact .btn { margin: 8px 0 18px; }
+
+/* Work grid */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 22px 0 0;   /* CHANGED: was "margin: 0;" — gives the cards room to grow upwards */
+  padding: 0;
+  list-style: none;
+}
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+}
+.work-card__image,
+.work-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  border-radius: 16px 12px 14px 10px;
+  transition: transform 0.2s ease;
+}
+transition: box-shadow 0.35s ease;      /* CHANGED: was transform 0.2s */
+}
+.work-card__title { font-size: 19px; }
+
+/* NEW: hover makes the card grow over its neighbours and show its description */
+.work-card {
+  position: relative;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.work-grid li:nth-child(3n+1) .work-card { transform-origin: left center; }   /* left cards grow rightwards */
+.work-grid li:nth-child(3n+2) .work-card { transform-origin: center; }
+.work-grid li:nth-child(3n) .work-card { transform-origin: right center; }    /* right cards grow leftwards */
+.work-card:hover,
+.work-card:focus-visible {
+  z-index: 3;
+  transform: scale(1.25) rotate(-1.5deg);
+}
+.work-card:hover .work-card__image,
+.work-card:hover img,
+.work-card:focus-visible .work-card__image,
+.work-card:focus-visible img { box-shadow: 0 16px 34px rgba(46, 26, 54, 0.3); }
+/* The other cards fade back so the hovered one stands out */
+.work-grid:hover .work-card:not(:hover) { opacity: 0.55; }
+
+/* NEW: caption made from the image's alt text (script.js adds it) */
+.work-card__caption {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 36px;
+  padding: 4px 8px;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 12px 10px 12px 8px;
+  font-size: 13px;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.work-card:hover .work-card__caption,
+.work-card:focus-visible .work-card__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* NEW: space above the "See all work" button */
+.card .work-more { margin: 44px 0 0; }
+
+/* About photo */
+.about__photo {
+  width: 120px;
+  height: 120px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  object-fit: cover;
+}
+.about__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E9DDF7;
+  font-size: 18px;
+}
+
+/* Process steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 20px;
+  line-height: 1.35;
+}
+.steps__num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 34px;
+  color: var(--coral);
+}
+
+/* ==============================================================
+   ANIMATIONS
+   ============================================================== */
+
+   /* NEW: gently bounces the arrow down */
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-3deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+@keyframes fly {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(1700px); }
+}
+@keyframes flap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.4); }
+}
+@keyframes shoot {
+  0% { transform: translate(0, 0) rotate(-24deg); opacity: 0; }
+  4% { opacity: 1; }
+  12% { transform: translate(-520px, 230px) rotate(-24deg); opacity: 0; }
+  100% { transform: translate(-520px, 230px) rotate(-24deg); opacity: 0; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==============================================================
+   PHONES + TABLETS
+   ============================================================== */
+@media (max-width: 760px) {
+  body { font-size: 19px; }
+  .site-header { padding: 10px 10px 0; }
+  .nav { padding: 6px 14px; gap: 0 16px; justify-content: center; }
+  .nav__logo { font-size: 26px; }
+  .nav__links { gap: 0 16px; justify-content: center; }
+  .nav__links a { padding: 6px 0; }
+  .section { padding: 140px 16px 80px; }
+  .section--hero { padding-top: 170px; }
+  .card { padding: 24px 22px; }
+  .work-grid,
+  .steps { grid-template-columns: 1fr; }
+  .hero__intro { font-size: 22px; }
+  .cloud:nth-of-type(3) { display: none; } /* fewer clouds on small screens */
+}
+
+/* ==============================================================
+   REDUCE MOTION — respects the visitor's system setting
+   ============================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==============================================================
+   PROJECT PAGES (projects/*.html)
+   ============================================================== */
+.project-page { background: var(--cream); }
+
+.project-sky {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #8E7DBA 0%, #F3A58C 60%, #FCE3B4 100%);
+}
+.project-sky svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.project-sky__back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-small);
+  text-decoration: none;
+}
+
+.project {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+.project h1 { font-size: clamp(52px, 7vw, 80px); }
+.project h2 { margin-top: 48px; }
+.project__intro { font-size: 24px; max-width: 640px; }
+
+.project__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+  padding: 20px 24px;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-big);
+}
+.project__facts dt { font-family: var(--font-heading); font-size: 26px; }
+.project__facts dd { margin: 0; }
+
+.project__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 24px 0;
+  border: 2px solid var(--ink);
+  border-radius: 20px 16px 18px 14px;
+  background: #F3C9B8;
+  object-fit: cover;
+}
+
+.project__next {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 64px;
+}
+
+@media (max-width: 760px) {
+  .project__facts { grid-template-columns: 1fr; }
+  .project-sky { height: 180px; }
+}
+
+/* ==============================================================
+   NEW: ALL WORK PAGE (work.html)
+   ============================================================== */
+   .all-work {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .all-work__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 2px solid var(--ink);
+    border-radius: var(--wobbly-big);
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .all-work__card:hover,
+  .all-work__card:focus-visible {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow: 0 16px 34px rgba(46, 26, 54, 0.2);
+  }
+  .all-work__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-bottom: 2px solid var(--ink);
+  }
+  .all-work__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 20px 20px;
+  }
+  .all-work__type { font-size: 16px; color: #7A3B2E; }
+  .all-work__title { font-family: var(--font-heading); font-size: 34px; line-height: 1; }
+  .all-work__desc { font-size: 19px; }
+  
+  @media (max-width: 760px) {
+    .all-work { grid-template-columns: 1fr; }
+  }

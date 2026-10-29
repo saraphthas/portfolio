@@ -347,8 +347,7 @@ main .card { pointer-events: auto; }  /* ...but content stays clickable */
   border-radius: 16px 12px 14px 10px;
   transition: transform 0.2s ease;
 }
-transition: box-shadow 0.35s ease;      /* CHANGED: was transform 0.2s */
-}
+
 .work-card__title { font-size: 19px; }
 
 /* NEW: hover makes the card grow over its neighbours and show its description */
@@ -627,3 +626,104 @@ transition: box-shadow 0.35s ease;      /* CHANGED: was transform 0.2s */
   @media (max-width: 760px) {
     .all-work { grid-template-columns: 1fr; }
   }
+
+  /* CHANGED: simple quote card — straight, no tape, no shadow, smaller quote mark */
+.quote {
+  position: relative;
+  max-width: 640px;
+  margin: 44px auto;
+  padding: 30px 36px 24px 68px;
+  background: #FFFFFF;                     /* white card stands out on the cream page */
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-big);        /* keeps the gently uneven hand-drawn corners */
+}
+.quote::before {                           /* small purple quote mark */
+  content: "\201C";
+  position: absolute;
+  left: 22px;
+  top: 14px;
+  font-family: var(--font-heading);
+  font-size: 64px;                         /* CHANGED: was 110px */
+  line-height: 1;
+  color: #b788ea;
+}
+.quote blockquote { margin: 0; }
+.quote p { margin: 0; font-size: 24px; line-height: 1.4; }
+.quote figcaption { margin-top: 12px; font-size: 18px; color: #7A3B2E; }
+
+/* Smaller on phones */
+@media (max-width: 760px) {
+  .quote { padding: 26px 20px 20px 54px; }
+  .quote::before { font-size: 52px; left: 14px; }
+  .quote p { font-size: 21px; }
+}
+
+/* NEW: GALLERY on project pages */
+.gallery { margin: 24px 0; }
+.gallery__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.gallery__track::-webkit-scrollbar { display: none; }
+.gallery__slide {
+  flex: 0 0 100%;
+  margin: 0;
+  scroll-snap-align: center;
+}
+.gallery__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #FFFFFF;
+  border: 2px solid var(--ink);
+  border-radius: 20px 16px 18px 14px;
+}
+.gallery__slide figcaption { margin-top: 10px; text-align: center; font-size: 19px; }
+
+.gallery__controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+.gallery__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: var(--cream);
+  color: var(--text);
+  border: 2px solid var(--ink);
+  border-radius: 50% 46% 52% 48%;
+  font-size: 22px;
+  cursor: pointer;
+}
+.gallery__btn:hover { background: #F3E9FB; }
+.gallery__btn:disabled { opacity: 0.35; cursor: default; }
+.gallery__dots { display: flex; gap: 2px; }
+.gallery__dot {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.gallery__dot::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: auto;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+}
+.gallery__dot[aria-current="true"]::after { background: #b788ea; }
+

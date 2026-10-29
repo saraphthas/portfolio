@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Change these for each project -->
-  <title>[Project name] — Saraphtha</title>
-  <meta name="description" content="[One sentence describing this project.]">
+  <title>Coterie — Saraphtha</title>
+  <meta name="description" content="Coterie: a UX case study for an app that helps university students build friendships through interest-based group spaces.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap">
 
-  <!-- "../" means "go up one folder" — style.css lives next to index.html -->
   <link rel="stylesheet" href="../style.css">
+  <script src="../gallery.js" defer></script>   <!-- NEW: makes the gallery work -->
 </head>
 <body class="project-page">
 
@@ -38,44 +37,98 @@
   </header>
 
   <main class="project">
-    <p class="eyebrow">case study · [year]</p>
-    <h1>[Project name]</h1>
-    <p class="project__intro">[Two sentences: what this project is and why it matters.]</p>
+    <p class="eyebrow">ux case study · 2023</p>
+    <h1>Coterie</h1>
+    <p class="project__intro">An app concept that helps university students make friends through interest-based group spaces, designed for students finding their footing again after the return to in-person learning.</p>
+    
+    <p><a class="btn" href="ADD FIGMA LINK HERE" target="_blank" rel="noopener">View the Figma prototype ↗</a></p>
 
     <!-- Quick facts -->
     <dl class="project__facts">
       <div>
         <dt>My role</dt>
-        <dd>[e.g. Visual designer]</dd>
+        <dd>UX/UI designer (solo project)</dd>
       </div>
       <div>
         <dt>Tools</dt>
-        <dd>[e.g. Figma, Procreate]</dd>
+        <dd>Figma, user surveys</dd>
       </div>
       <div>
         <dt>Timeline</dt>
-        <dd>[e.g. 6 weeks]</dd>
+        <dd>3 weeks</dd>
       </div>
     </dl>
 
-    <!-- Swap each placeholder div for: <img class="project__image" src="../images/project-one-hero.jpg" alt="[describe the image]"> -->
-    <div class="project__image">[Main project image]</div>
-
+    <img class="project__image" src="../images/coterie-home.jpg" alt="Coterie app screens showing interest-based group spaces">
+    
     <h2>The challenge</h2>
-    <p>[What problem were you solving? Who was it for?]</p>
+    <p>After two years of mostly online classes, many students felt anxious about returning to campus. Most of their recent social contact had been with family, and stepping back into a crowded university felt overwhelming.</p>
+    <p>At my university, making friends was already hard before the pandemic, because so many students commute and leave campus right after class. The pandemic made that gap wider. So I set out to answer two questions:</p>
+    <ul>
+      <li>What barriers are students facing in their transition back to in-person learning?</li>
+      <li>How is this affecting their social wellness?</li>
+    </ul>
 
-    <h2>My process</h2>
-    <p>[Sketches, research, ideas you tried — show how you think.]</p>
-    <div class="project__image" style="background: #C9C2E8;">[Process image]</div>
+    <h2>Research</h2>
+    <p>I started by brainstorming what might be behind students' poor social wellness: what connects students to each other, what commuter culture is missing, and what it takes to build a community. Then I surveyed students to find out how they were really feeling.</p>
+    <img class="project__image" src="../images/coterie-survey.jpg" alt="Survey results: how difficult students find it to make friends in person">
 
-    <h2>The result</h2>
-    <p>[What you made, and what happened because of it.]</p>
-    <div class="project__image" style="background: #BFE0C8;">[Final image]</div>
+       <!-- CHANGED: now a proper quote, styled in style.css -->
+       <figure class="quote">
+        <blockquote>
+          <p>I want to join clubs and meet people with the same interests, but meetings feel intimidating when I don't know anyone.</p>
+        </blockquote>
+        <figcaption>— student survey response</figcaption>
+      </figure>
+
+    <h2>What I learned</h2>
+    <p>The surveys confirmed that students were struggling to reconnect after months of minimal social contact, and that commuting made it even harder. I turned the findings into a user profile capturing students' attributes, pain points, motivations and goals.</p>
+    <p>Their core needs came down to three things: an online space to meet new people, a way to share their hobbies, and an easy way to find people like them.</p>
+    <img class="project__image" src="../images/coterie-persona.jpg" alt="User profile showing a student's attributes, pain points, motivations and goals">
+
+    <h2>Designing Coterie</h2>
+    <p>Based on the survey data, I built a user flow and a low-fidelity prototype. My first idea was a matching system: students would like each other's profiles, and a mutual like would unlock a chat.</p>
+    <img class="project__image" src="../images/coterie-wireframes1.jpg" alt="Low-fidelity wireframes of the redesigned Coterie flow">
+    
+    <p>When I evaluated it, I realised it had a big problem. Matching encouraged students to judge each other on a profile alone, which was the opposite of the judgment-free space I wanted to create. So I redesigned the flow around group spaces instead, where students can join conversations comfortably without being "picked."</p>
+    <img class="project__image" src="../images/coterie-wireframes-v2.jpg" alt="Low-fidelity wireframes of the redesigned Coterie flow">
+
+    <h2>The design</h2>
+    <p>The final design organises Coterie into categories of groups that anyone can join freely. Students can connect with classmates in their courses, explore hobbies they love, and discover new communities, all without the pressure of a one-on-one match.</p>
+    
+        <!-- NEW: 3-photo gallery -->
+        <div class="gallery" role="region" aria-roledescription="carousel" aria-label="Final Coterie designs">
+          <div class="gallery__track" tabindex="0" aria-label="Use the left and right arrow keys to browse">
+            <figure class="gallery__slide">
+              <img class="gallery__image" src="../images/coterie-final-groups.jpg" alt="[Describe screen 1]">
+              <figcaption>Connect with classmates</figcaption>
+            </figure>
+            <figure class="gallery__slide">
+              <img class="gallery__image" src="../images/coterie-final-chat.jpg" alt="[Describe screen 2]">
+              <figcaption>Explore your hobbies</figcaption>
+            </figure>
+            <figure class="gallery__slide">
+              <img class="gallery__image" src="../images/coterie-final-connected.jpg" alt="[Describe screen 3]">
+              <figcaption>Discover new communities</figcaption>
+            </figure>
+          </div>
+          <div class="gallery__controls">
+            <button class="gallery__btn gallery__prev" type="button" aria-label="Previous image">←</button>
+            <div class="gallery__dots"></div>
+            <button class="gallery__btn gallery__next" type="button" aria-label="Next image">→</button>
+          </div>
+        </div>
+    
+
+
+    <h2>Reflection</h2>
+    <p>Coterie was my first time doing user interviews, and it changed how I think about design. Hearing students describe, in their own words, how lonely and intimidating campus felt made the problem real in a way no brainstorm could. It taught me to listen first and let what people actually say shape the solution, rather than starting with an idea and looking for proof.</p>
+    <p>The biggest lesson came from letting go of my first concept. The matching system seemed like an obvious way to connect people, but it worked against the very thing students needed: a space where they wouldn't feel judged. Seeing that taught me that a feature can be clever and still be wrong for the people using it.</p>
+    <p>It was also the first time I got to design something that could genuinely be useful to people, and that's what has stayed with me most. If I took Coterie further, my next step would be usability testing with students to see how comfortable the group spaces really feel, and what would make someone take that first step to join.</p>
 
     <nav class="project__next" aria-label="More projects">
       <a class="btn" href="../index.html#work">← All work</a>
-      <!-- Point this at your next project page -->
-      <a class="btn" href="project-two.html">Next project →</a>
+      <a class="btn" href="project-three.html">Next project →</a>
     </nav>
   </main>
 </body>

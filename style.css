@@ -413,7 +413,7 @@ main .card { pointer-events: auto; }  /* ...but content stays clickable */
   font-size: 18px;
 }
 
-//* CHANGED: Process steps — stacked rows with numbered circles */
+/* CHANGED: Process steps — stacked rows with numbered circles */
 .steps {
   display: flex;
   flex-direction: column;              /* one step per row instead of 3 columns */

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Foundations of Business Analysis — Saraphtha</title>
+  <meta name="description" content="My work from the Foundations of Business Analysis course at the University of Toronto: a product roadmap, process models, test cases and a BA plan.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&display=swap">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="project-page">
+
+  <!-- Same sunset strip as your other project pages -->
+  <header class="project-sky">
+    <a class="project-sky__back" href="../all-work.html">← Back to all work</a>
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g stroke="#3B2340" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+        <circle cx="1180" cy="190" r="60" fill="#FFE9AE"/>
+        <path d="M0 200 C 240 160 480 180 720 200 C 960 220 1200 170 1440 180 L1440 260 L0 260 Z" fill="#C893A8"/>
+        <path d="M0 228 C 300 210 700 236 1000 224 C 1200 216 1340 226 1440 222 L1440 260 L0 260 Z" fill="#98AE74"/>
+        <path d="M200 226 Q 620 200 863 158" fill="none" stroke="#FFFBF4" stroke-width="1.6"/>
+        <g transform="translate(-20 -130) rotate(12 900 210)">
+          <polygon points="900,150 940,210 900,210" fill="#E8604F"/>
+          <polygon points="900,150 860,210 900,210" fill="#F6C453"/>
+          <polygon points="860,210 900,290 900,210" fill="#E8604F"/>
+          <polygon points="940,210 900,290 900,210" fill="#F6C453"/>
+          <polygon points="900,150 940,210 900,290 860,210" fill="none"/>
+        </g>
+      </g>
+    </svg>
+  </header>
+
+  <main class="project">
+    <p class="eyebrow">course work · University of Toronto SCS · 2026</p>
+    <h1>Foundations of Business Analysis</h1>
+    <p class="project__intro">Four real-world style cases, four core business analysis skills. In each one I play the BA: planning what to build, mapping how work flows, checking that software does what it should, and planning the analysis behind a whole project.</p>
+
+    <!-- Quick facts -->
+    <dl class="project__facts">
+      <div>
+        <dt>Course</dt>
+        <dd>Foundations of Business Analysis (SCS 2379)</dd>
+      </div>
+      <div>
+        <dt>Skills</dt>
+        <dd>Roadmapping, process modelling, test design, BA planning</dd>
+      </div>
+      <div>
+        <dt>Progress</dt>
+        <dd>1 of 4 complete</dd>   <!-- EDIT: update as you finish each one -->
+      </div>
+    </dl>
+
+    <!-- ============================================================
+         CONTENTS — one card per piece of work, jumps down the page.
+         When you finish one, change "Coming soon" to "Done" and add
+         the class "course-toc__status--done".
+         ============================================================ -->
+    <ol class="course-toc">
+      <li>
+        <a class="course-toc__card" href="#roadmap">
+          <span class="course-toc__num">1</span>
+          <span class="course-toc__title">Product Roadmap</span>
+          <span class="course-toc__case">The Trust Bank</span>
+          <span class="course-toc__status course-toc__status--done">Done</span>
+        </a>
+      </li>
+      <li>
+        <a class="course-toc__card" href="#process">
+          <span class="course-toc__num">2</span>
+          <span class="course-toc__title">Process Modelling</span>
+          <span class="course-toc__case">The Stream</span>
+          <span class="course-toc__status">Coming soon</span>
+        </a>
+      </li>
+      <li>
+        <a class="course-toc__card" href="#testing">
+          <span class="course-toc__num">3</span>
+          <span class="course-toc__title">Software Testing</span>
+          <span class="course-toc__case">Amazon.ca</span>
+          <span class="course-toc__status">Coming soon</span>
+        </a>
+      </li>
+      <li>
+        <a class="course-toc__card" href="#ba-plan">
+          <span class="course-toc__num">4</span>
+          <span class="course-toc__title">BA Plan (team project)</span>
+          <span class="course-toc__case">North Beaufort Hospital</span>
+          <span class="course-toc__status">Coming soon</span>
+        </a>
+      </li>
+    </ol>
+
+
+    <!-- ============================================================
+         1. PRODUCT ROADMAP — done
+         ============================================================ -->
+    <section class="course-piece" id="roadmap">
+      <p class="eyebrow">01 · product roadmap</p>
+      <h2>The Trust Bank: planning a new mobile app</h2>
+
+      <h3>The situation</h3>
+      <p>The Trust Bank Inc. had an old, hard-to-use web-based mobile app, and new features took four to six months to ship. The bank wanted native iOS and Android apps built side by side, rolled out in three stages (internal testers, a customer pilot, then everyone) before retiring the old app. As the BA working with the Product Lead, my job was to turn a long feature list into a clear two-year roadmap.</p>
+      <p class="project__tags">Prioritization · Release planning · Agile roadmapping · Stakeholder goals</p>   <!-- CHANGED: new skills line -->
+
+      <!-- Save your roadmap as an image at images/trust-bank-roadmap.png -->
+      <a class="project__zoom" href="../images/ProductRoadmap.jpg" target="_blank" rel="noopener">
+        <img class="project__image project__image--contain" src="../images/ProductRoadmap.jpg" alt="One-page product roadmap for The Trust Bank mobile app: 20 features across seven releases in Alpha, Beta and Public stages, January 2027 to December 2028.">
+      </a>
+      <p class="project__caption">
+        Click the roadmap to see it full size ·
+        <!-- Save your PDF at files/trust-bank-roadmap.pdf -->
+        <a href="../images/trustbank-product-roadmap.pdf" download>Download the PDF</a>
+      </p>
+
+      <!-- CHANGED: priority order now matches your roadmap -->
+      <h3>How I prioritized</h3>
+      <p>I chose 20 features and grouped them into five themes, then ordered the themes by what a customer needs first. Each one builds on the one before it:</p>
+      <ol class="priority-path">
+        <li>Secure access</li>
+        <li>Money movement</li>
+        <li>Self-service</li>
+        <li>Insights</li>
+        <li>Lending</li>
+      </ol>
+      <p>You can't move money until you can sign in and see your accounts, and there's no point in spending insights before people trust the app with their everyday banking. Investments and loans come last because they carry the most risk, so they launch once the app has proven itself with real customers.</p>
+
+      <!-- CHANGED: instead of repeating the roadmap, this explains the thinking behind it -->
+      <h3>Key decisions</h3>
+      <ul class="project__list">
+        <li><strong>Seven small releases, not three big ones.</strong> Splitting each stage into releases gives testers something new every few months and lets the team adjust after each one.</li>
+        <li><strong>The old app stays live until the very end.</strong> Customers are never left without a way to bank. It is only retired in the last release, once everything has moved over.</li>
+        <li><strong>Lending kept simple.</strong> Investment and loan pages share information and link out to apply, so the two-year plan stays realistic.</li>
+      </ul>
+
+      <h3>What I learned</h3>
+      <p>The hardest part wasn’t choosing features, it was choosing what to leave for later. On a banking app almost everything feels essential, so I kept coming back to two questions: what can a customer truly not do without, and what has to exist before something else can work?</p>
+      <p>I also learned that a roadmap is a starting point for conversation, not a promise. Writing my assumptions down showed me which dates depended on things I couldn’t know yet. Next time, if I had a team I was working with, I’d test the priority order with the Product Lead and a few real customers before locking anything in.</p></p>
+    </section>
+
+
+    <!-- ============================================================
+         2. PROCESS MODELLING — coming soon
+         When it's done: delete the "course-soon" box and add your
+         diagrams (images/stream-place-order.png, images/stream-fulfill-order.png)
+         ============================================================ -->
+    <section class="course-piece" id="process">
+      <p class="eyebrow">02 · process modelling</p>
+      <h2>The Stream: taking orders online</h2>
+      <p>The Stream sells CO2 refill cylinders, and almost every order came in by phone, which meant long hold times, rising staff costs and mistakes in emailed orders. They wanted an online order form. My task is to model the future-state processes for placing an order and fulfilling it, from the customer's first click to the order being marked complete.</p>
+      <div class="course-soon">
+        <p><strong>In progress.</strong> Future-state process models for <em>Place Order</em> and <em>Fulfill Order</em> are on their way.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. SOFTWARE TESTING — coming soon
+         ============================================================ -->
+    <section class="course-piece" id="testing">
+      <p class="eyebrow">03 · software testing</p>
+      <h2>Amazon.ca: writing test cases</h2>
+      <p>Before a new release goes live, someone has to prove it works. As the BA on the Amazon.ca launch, I am writing 20 step-by-step test cases for creating an account, searching, and viewing and editing the shopping cart, including what should happen when people enter the wrong thing.</p>
+      <div class="course-soon">
+        <p><strong>In progress.</strong> Test cases and a sample walkthrough are on their way.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. COURSE PROJECT — coming soon (team of 3)
+         ============================================================ -->
+    <section class="course-piece" id="ba-plan">
+      <p class="eyebrow">04 · course project · team of 3</p>
+      <h2>North Beaufort Hospital: planning the analysis</h2>
+      <p>A new Ontario regulation requires hospitals to define and track health care performance indicators. North Beaufort Hospital, with three campuses and over 5,000 staff, needs one system to report on them. Our team is writing the BA Plan: who we need to talk to, every analysis task in order, and the techniques, people and time each one needs, from requirements through vendor selection to go-live.</p>
+      <div class="course-soon">
+        <p><strong>In progress.</strong> Our stakeholder list and task plan are on their way.</p>
+        <!-- EDIT later: add a line about YOUR part of the team project -->
+      </div>
+    </section>
+
+    <nav class="project__next" aria-label="More projects">
+      <a class="btn" href="../all-work.html">← All work</a>
+      <a class="btn" href="project-one.html">Next project →</a>
+    </nav>
+  </main>
+</body>
+</html>

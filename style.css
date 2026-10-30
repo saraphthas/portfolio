@@ -759,3 +759,140 @@ main .card { pointer-events: auto; }  /* ...but content stays clickable */
 }
 .gallery__dot[aria-current="true"]::after { background: #b788ea; }
 
+/* ==============================================================
+   NEW: BUSINESS ANALYSIS COURSE PAGE (projects/business-analysis.html)
+   ============================================================== */
+
+/* Sub-headings inside each piece of work */
+.project h3 {
+  margin: 28px 0 6px;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+/* Contents cards at the top */
+.course-toc {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 32px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+.course-toc__card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 100%;
+  padding: 16px 16px 14px;
+  background: #FFFFFF;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-big);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.course-toc__card:hover,
+.course-toc__card:focus-visible {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 0 12px 26px rgba(46, 26, 54, 0.18);
+}
+.course-toc__num { font-family: var(--font-heading); font-size: 30px; line-height: 1; color: var(--coral); }
+.course-toc__title { font-family: var(--font-heading); font-size: 24px; line-height: 1.05; }
+.course-toc__case { font-size: 16px; color: #7A3B2E; }
+.course-toc__status {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0 10px;
+  border: 2px dashed var(--ink);
+  border-radius: var(--wobbly-small);
+  font-size: 14px;
+}
+.course-toc__status--done { background: #BFE0C8; border-style: solid; }
+
+/* Each assignment section */
+.course-piece {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 2px dashed rgba(59, 35, 64, 0.35);
+  scroll-margin-top: 24px;
+}
+.course-piece h2 { margin-top: 0; }
+
+/* "In progress" note for unfinished pieces */
+.course-soon {
+  margin: 20px 0 0;
+  padding: 18px 22px;
+  background: #F3E9FB;
+  border: 2px dashed var(--ink);
+  border-radius: var(--wobbly-big);
+}
+.course-soon p { margin: 0; }
+
+/* Roadmap image shows the whole page instead of cropping it */
+.project__zoom { display: block; }
+.project__image--contain {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+  background: #FFFFFF;
+  transition: transform 0.2s ease;
+}
+.project__zoom:hover .project__image--contain { transform: translateY(-3px) rotate(-0.5deg); }
+.project__caption { margin: -8px 0 0; text-align: center; font-size: 18px; }
+
+/* Bullet lists */
+.project__list { padding-left: 24px; }
+.project__list li { margin-bottom: 10px; }
+
+/* The three roadmap stages */
+.roadmap-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+  padding: 0;
+  list-style: none;
+}
+.roadmap-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 20px;
+  background: #FFFFFF;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-big);
+  font-size: 18px;
+}
+.roadmap-stage p { margin: 8px 0 0; }
+.roadmap-stage__tag {
+  align-self: flex-start;
+  padding: 2px 12px;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-small);
+  font-size: 16px;
+}
+.roadmap-stage:nth-child(1) .roadmap-stage__tag { background: #F3C9B8; }
+.roadmap-stage:nth-child(2) .roadmap-stage__tag { background: #C9C2E8; }
+.roadmap-stage:nth-child(3) .roadmap-stage__tag { background: #BFE0C8; }
+.roadmap-stage__name { margin-top: 8px; font-family: var(--font-heading); font-size: 28px; line-height: 1.05; }
+.roadmap-stage__when { color: #7A3B2E; font-size: 17px; }
+
+/* Small label on the All Work card */
+.all-work__badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 10px;
+  background: var(--sunny);
+  color: var(--text);
+  border: 2px solid var(--ink);
+  border-radius: var(--wobbly-small);
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .course-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .roadmap-stages { grid-template-columns: 1fr; }
+}
+

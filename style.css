@@ -846,53 +846,48 @@ main .card { pointer-events: auto; }  /* ...but content stays clickable */
 .project__list { padding-left: 24px; }
 .project__list li { margin-bottom: 10px; }
 
-/* The three roadmap stages */
-.roadmap-stages {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin: 28px 0;
+/* NEW: skill tags under "The situation" */
+.project__tags {
+  margin: 4px 0 0;
+  font-size: 17px;
+  color: #7A3B2E;
+}
+
+/* NEW: the five-step priority path, like stops along a kite string */
+.priority-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 8px;
+  margin: 16px 0 20px;
   padding: 0;
   list-style: none;
+  counter-reset: step;
 }
-.roadmap-stage {
+.priority-path li {
+  counter-increment: step;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 18px 20px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 8px;
   background: #FFFFFF;
   border: 2px solid var(--ink);
-  border-radius: var(--wobbly-big);
-  font-size: 18px;
-}
-.roadmap-stage p { margin: 8px 0 0; }
-.roadmap-stage__tag {
-  align-self: flex-start;
-  padding: 2px 12px;
-  border: 2px solid var(--ink);
   border-radius: var(--wobbly-small);
-  font-size: 16px;
+  font-size: 19px;
 }
-.roadmap-stage:nth-child(1) .roadmap-stage__tag { background: #F3C9B8; }
-.roadmap-stage:nth-child(2) .roadmap-stage__tag { background: #C9C2E8; }
-.roadmap-stage:nth-child(3) .roadmap-stage__tag { background: #BFE0C8; }
-.roadmap-stage__name { margin-top: 8px; font-family: var(--font-heading); font-size: 28px; line-height: 1.05; }
-.roadmap-stage__when { color: #7A3B2E; font-size: 17px; }
-
-/* Small label on the All Work card */
-.all-work__badge {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 0 10px;
-  background: var(--sunny);
-  color: var(--text);
+.priority-path li::before {
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
   border: 2px solid var(--ink);
-  border-radius: var(--wobbly-small);
-  font-size: 14px;
+  border-radius: 50% 46% 52% 48%;
+  font-family: var(--font-heading);
+  color: var(--coral);
 }
-
-@media (max-width: 760px) {
-  .course-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .roadmap-stages { grid-template-columns: 1fr; }
+.priority-path li:not(:last-child)::after {
+  content: "→";
+  margin-left: 8px;
+  color: var(--coral);
 }
-

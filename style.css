@@ -891,3 +891,37 @@ main .card { pointer-events: auto; }  /* ...but content stays clickable */
   margin-left: 8px;
   color: var(--coral);
 }
+
+/* NEW: contents cards on phones become one tidy list (number · title · status) */
+@media (max-width: 760px) {
+  .course-toc { grid-template-columns: 1fr; gap: 10px; }
+  .course-toc__card {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    column-gap: 12px;
+    align-items: center;
+    padding: 12px 16px;
+  }
+  .course-toc__num { grid-column: 1; grid-row: 1 / span 2; }
+  .course-toc__title { grid-column: 2; grid-row: 1; }
+  .course-toc__case { grid-column: 2; grid-row: 2; }
+  .course-toc__status {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+    margin-top: 0;
+    white-space: nowrap;
+  }
+}
+
+/* NEW: VIDEO + CREDITS on project pages */
+.project__video {
+  display: block;
+  width: 100%;
+  margin: 24px 0 8px;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 20px 16px 18px 14px;
+}
+.project__caption { margin: 0 0 24px; font-size: 18px; text-align: center; }
+.project__credits { margin-top: 40px; font-size: 18px; color: #7A3B2E; }

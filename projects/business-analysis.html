@@ -52,7 +52,7 @@
       </div>
       <div>
         <dt>Progress</dt>
-        <dd>1 of 4 complete</dd>   <!-- EDIT: update as you finish each one -->
+        <dd>2 of 4 complete</dd>   <!-- EDIT: update as you finish each one -->
       </div>
     </dl>
 
@@ -75,7 +75,7 @@
           <span class="course-toc__num">2</span>
           <span class="course-toc__title">Process Modelling</span>
           <span class="course-toc__case">The Stream</span>
-          <span class="course-toc__status">Coming soon</span>
+          <span class="course-toc__status course-toc__status--done">Done</span>   <!-- CHANGED -->
         </a>
       </li>
       <li>
@@ -149,14 +149,45 @@
          When it's done: delete the "course-soon" box and add your
          diagrams (images/stream-place-order.png, images/stream-fulfill-order.png)
          ============================================================ -->
-    <section class="course-piece" id="process">
-      <p class="eyebrow">02 · process modelling</p>
-      <h2>The Stream: taking orders online</h2>
-      <p>The Stream sells CO2 refill cylinders, and almost every order came in by phone, which meant long hold times, rising staff costs and mistakes in emailed orders. They wanted an online order form. My task is to model the future-state processes for placing an order and fulfilling it, from the customer's first click to the order being marked complete.</p>
-      <div class="course-soon">
-        <p><strong>In progress.</strong> Future-state process models for <em>Place Order</em> and <em>Fulfill Order</em> are on their way.</p>
-      </div>
-    </section>
+        <!-- ============================================================
+         2. PROCESS MODELLING — done
+         CHANGED: this whole section is new, built like the roadmap section
+         ============================================================ -->
+         <section class="course-piece" id="process">
+          <p class="eyebrow">02 · process modelling</p>
+          <h2>The Stream: taking orders online</h2>
+    
+          <h3>The situation</h3>
+          <p>The Stream sells CO₂ refill cylinders, and almost every order came in by phone, which meant long hold times, rising staff costs and mistakes in emailed orders. They wanted an online order form. My task was to model the future-state processes for placing an order and fulfilling it, from the customer's first click to the order being marked complete.</p>
+          <p class="project__tags">BPMN · Process modelling · Swimlanes · Business rules</p>
+    
+          <h3>Place Order</h3>
+          <p>How a customer orders online: logging in, creating an account or continuing as a guest, then entering order details, choosing a delivery date and paying. The order system checks each step, creates the order and lets the Fulfillment team know right away.</p>
+          <a class="project__zoom" href="../images/Place Order - The Stream.pdf" target="_blank" rel="noopener">
+            <img class="project__image project__image--contain" src="../images/PlaceOrder.png" alt="BPMN process map for Place Order, with Online Customer and Order System lanes.">
+          </a>
+    
+          <h3>Fulfill Order</h3>
+          <p>What happens once the order arrives: Fulfillment prints it and assigns a driver, the driver delivers and collects any empty cylinders, and the order is marked complete.</p>
+          <a class="project__zoom" href="../images/Fulfill Order - The Stream.pdf" target="_blank" rel="noopener">
+            <img class="project__image project__image--contain" src="../images/FufillOrder.png" alt="BPMN process map for Fulfill Order, with Fulfillment User and Driver lanes.">
+          </a>
+          <p class="project__caption">Click a map to see it full size</p>
+    
+          <h3>Key decisions</h3>
+          <ul class="project__list">
+            <li><strong>Guest checkout as an option.</strong> Customers can log in, create an account or just continue as a guest, so nobody is turned away by a sign-up form.</li>
+            <li><strong>Catch mistakes before the order is placed.</strong> The system checks the order details and the payment, and sends the customer back to fix anything wrong. That replaces the errors that used to come from emailed orders.</li>
+            <li><strong>Business rules built in.</strong> The delivery date is worked out automatically from a 2 pm cutoff, and customers can only pick a later date, never an earlier one.</li>
+            <li><strong>No more phone tag.</strong> Every new order automatically notifies Fulfillment, and the order's status moves from New to On Delivery to Complete, so everyone can see where it is.</li>
+          </ul>
+    
+          <h3>What I learned</h3>
+          <p>Mapping a process forces you to answer questions nobody thinks to ask out loud: what happens if the payment fails, what if the customer has no account, who actually tells the driver? Every decision point on the map was a question I had to answer.</p>
+          <p>I also learned that a good process map is as much about what it leaves out as what it shows. Splitting the work into two maps, one for the customer and one for the team behind the scenes, kept each one readable while still showing how they connect.</p>
+        </section>
+
+    
 
 
     <!-- ============================================================
